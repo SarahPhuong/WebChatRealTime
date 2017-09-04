@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ChatApp</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+      <script src="jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <script src="socket.io/socket.io.js"></script>
+    <script src="function.js"></script>
+    <script>
+      var socket= io("localhost:3000");
+      var alertRegisterFail=function(item){
+        alert("User "+item+" is not valiable");
+      };
+
+
+      var enterRoomChat=function(){
+        hideScreenRegister();
+      };
+      var getUser=function(user){
+          $("#danhsachUserOnline").empty();
+          for (var i = 0; i < user.mangUsernameOnline.length; i++) {
+                $("#danhsachUserOnline").append('<li class="list-group-item"><span class="glyphicon glyphicon-user"></span> '+user.mangUsernameOnline[i]+'<br/><h6>Online</h6></li>');
+                if(user.disconnect>=0){
+                  for (var j = 0; j < user.disconnect.length; j++) {
+                        $("#danhsachUserOnline").append('<li class="list-group-item"><span class="glyphicon glyphicon-user"></span> '+user.disconnect[j]+'<br/><h6>Leave</h6></li>');
+                  };
+                }
+
+          };
+      };
+
+      var hideScreenRegister= function(){
+
+        $(".login").hide();
+        $(".box_chat").show();
+      };
+
+      var sendSmile= function(msg){
+        if(msg.idclient==socket.id){
+          var hoten="<div class='tinnhan_di'><span class='hoten'>"+msg.username+"</span> :";
+
+          var msg="<img class='img' src='img/smile.png' width='10%'></img></div>";
+
+        }
+        else {
+          var hoten="<div class='tinnhan_toi'><span class='hoten'>"+msg.username+"</span> :";
+          var msg="<img class='img' src='img/smile.png' width='10%'></img></div>";
+        }
+        $("#dsMsg").append(hoten+msg+"<div class='block'></div>");
+      }
+
+      var sendMsg=function(msg){
+          if(msg.idclient==socket.id){
+            if(document.getElementById('txtMessage').value == ""){
+              alert("bạn chua nhap tin nhan");
+
+            }
+            else{
+              var msg="<div class='message my-message'>" +msg.message+"</div>";
+              $("#dsMsg").append(msg+"<div class='block'></div>");
+              $("#txtMessage").val("");
+            }
+          }
+          else {
+            var msg="<div class='clear'><div class='friend-name'>"+ msg.username+"</div><span class='glyphicon glyphicon-user avatar'></span><div class='message friend-message'>"+msg.message+"</div></div>";
+            $("#dsMsg").append(msg+"<div class='block'></div>");
+            $("#txtMessage").val("");
+          }
+        };
+       var serverSendMsg=function(message){
+        if(message.message=="smile"){
+            return sendSmile(message);
+          }
+        else{
+            return sendMsg(message);
+          }
+       }
+      socket.on("REGISTER_FAIL_EVENT", function(item){
+        alertRegisterFail(item);
+      });
+      socket.on("get users", function(user){
+          getUser(user);
+
+      });
+
+
+      socket.on("REGISTER_SUCCESS_EVENT", function(){
+        enterRoomChat();
+      });
+      // lang nghe server gui msg
+      socket.on("SERVER_MESSAGE_EVENT", function(message){
+        serverSendMsg(message);
+      });
+      // socket.on("server-xuly-chocgheo", function(username){
+      //   alert(username+"Vua moi choc ban");
+      // })
+      $(document).ready(function(){
+        $(".box_chat").hide();
+        $("#btnDangNhap").click(function(){
+          socket.emit("LOGIN_EVENT",{email:$("#email").val(),username:$("#txtUsername").val()});
+        });
+        $("#btnSend").click(function(){
+          socket.emit("CLIENT_MESSAGE_EVENT", $("#txtMessage").val());
+        });
+      });
+    </script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+  </head>
+  <body>
+    <div id="wrapper"></div>
+    <!-- <div id="wrapper" >
+      <div class="login">
+        <div class="logo">
+          <div class="App-header">
+             <a href="#"><img src="img/logo.png" class="App-logo" alt="logo"/></a>
+             <h1>Join Chat FLC</h1>
+           </div>
+        </div>
+        <form class="box_login">
+          <div class="box_input">
+            <label>Username: </label>
+            <input type="text" id="txtUsername" class="input_text" placeholder="Username" required=""/><br>
+          </div>
+          <div class="box_input">
+            <label>Email: </label>
+            <input type="email" class="input_text" id="email" placeholder="Email" required=""/>
+          </div>
+          <div class="box_control">
+            <button type="reset" id="btnHuyBo" class="btn_control">Hủy bỏ</button>
+            <input type="button" id="btnDangKi" class="btn_control" value="Đăng kí"/>
+          </div>
+        </form>
+      </div>
+
+      <div class="block"></div>
+      <div class="box_chat" id="messageArea">
+        <div id="left" class="chat">
+          <div id="title">User Online</div>
+          <div id="danhsachUserOnline"></div>
+        </div>
+        <div id="right">
+          <div id="dsMsg"></div>
+          <div class="block"></div>
+          <div class="control">
+              <input type="text" id="txtMessage" placeholder="Message..." class="form-control" required=""/>
+              <button type="button" id="btnSend" value="Send"><span class="glyphicon glyphicon-share-alt"></span></button>
+          </div>
+        </div>
+        </div>
+    </div> -->
+    <script src="bundle.js"></script>
+
+  </body>
+</html>

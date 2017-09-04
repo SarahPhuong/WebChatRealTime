@@ -1,0 +1,129 @@
+
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 100px;
+}
+
+.App-header {
+  padding: 5px;
+  text-align: center;
+}
+.App-home span{
+  margin-top: 40px;
+  font-size: 30px;
+  float: right
+}
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.top{
+  text-align: center;
+  width: 350px;
+  height: auto;
+  margin: auto;
+  margin-bottom: 5px;
+  padding-bottom: 15px;
+  border-radius: 4px;
+}
+.box_login{
+  background-color: white;
+    width: 350px;
+    height: auto;
+    margin: auto;
+    padding-bottom: 15px;
+    border: 1px solid green;
+    border-radius: 4px;
+}
+.input_text{
+    font-size: 14px;
+    white-space: nowrap;
+    background-image: none;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 12px 10px;
+    border: 1px solid green;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 5px 5px 15px 5px;
+    width: 90%;
+}
+label{
+    font-family: Segoe UI;
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 5px;
+    text-decoration: none;
+}
+.box_input{
+    margin-top: 20px;
+    padding-left: 20px;
+    margin-bottom: 5px;
+}
+.box_control{
+  margin: 5px 5px 15px 20px;
+  display: inline-block;
+}
+.btn_control{
+    font-size: 14px;
+    color: white;
+    white-space: nowrap;
+    user-select: none;
+    background-image: none;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    display: inline-block;
+    padding: 12px 18px;
+    border: 1px solid #337ab7;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 0px 2.5px 5px 5px;
+    width: 145px;
+    background: green
+}
+.box_control a,.box_control a:hover{
+  text-decoration: none;
+  color: #fff;
+}
+.btn_register{
+  width: 300px
+}
+.btn_top{
+    font-size: 14px;
+    color: white;
+    white-space: nowrap;
+    user-select: none;
+    background-image: none;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    display: inline-block;
+    padding: 12px 18px;
+    border: 1px solid white;
+    overflow: hidden;
+    width:50%;
+    background: green;
+    -webkit-appearance: none;
+}
+.top a{
+  text-decoration: none;
+  color: #fff
+}
+.top a:hover{
+  color: red
+}
+.top .active{
+  background: #448731;
+  color: red
+}
+.hidden{
+  display: none
+}
+.notify{
+  color: red;
+  text-align: center
+}

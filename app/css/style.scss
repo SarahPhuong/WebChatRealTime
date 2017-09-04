@@ -1,0 +1,210 @@
+@import '~foundation-sites/scss/foundation';
+
+body .chat::-webkit-scrollbar,body #dsMsg::-webkit-scrollbar {
+    width: 0.2em;
+    border-radius: 10px
+}
+
+body .chat::-webkit-scrollbar-track, body #dsMsg::-webkit-scrollbar-track  {
+    // -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px
+}
+
+body .chat::-webkit-scrollbar-thumb, body #dsMsg::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+  border-radius: 10px
+}
+.page_top{
+    padding: 0;
+    background-color: green
+}
+.top-bar, .top-bar ul{
+    background: green
+}
+.menu li a{
+    color: white
+
+}
+.menu li a:hover, .menu li a.active{
+    color: red
+}
+.page_right{
+    padding-top:1%;
+    padding-right: 5%
+}
+.page_right ul li ul{
+    margin-top:8%;
+    background: rgb(249, 249, 249);
+}
+.page_right ul li ul li a{
+    color: #000
+}
+#left{
+    width: 20%;
+    float: left;
+    border-right: 1px solid green;
+    min-height: 37.5rem;
+    font-size: 20px;
+    font-weight: bold
+}
+#left h3{
+    text-align: center;
+    border-bottom: 1px solid green;
+    margin-bottom: 0;
+}
+#left ul li{
+    border: none;
+}
+#left span{color: blue}
+#left h6{color: green}
+.list-group{
+    margin-left: 0
+}
+#right{
+    width: 80%;
+    float: left;
+    position: absolute;
+    right: 0;
+    bottom: 1%;
+}
+#dsMsg{
+  overflow-y: scroll;overflow-x: hidden;clear: both;
+  height: 58.5rem;
+
+}
+.box_chat{
+    min-height: 66rem;
+    position: relative;
+    background: rgba(183, 255, 170, 0.25);
+}
+.form-control{
+    float: left;
+    width: 80%;
+    outline: none;
+    box-shadow: none;
+    border: 0
+}
+textarea.form-control{border:0;outline: none;box-shadow: none;outline-style:none;}
+textarea.form-control:focus{
+    outline: none;
+    outline-width: 0;
+    border: 0;
+    box-shadow: none
+}
+.block{
+  width: 100%;
+  clear: both
+}
+#txtMessage, #btnSend{
+  float: left;
+  margin: 2px
+}
+#txtMessage{
+  width: 90%;
+    height: 6rem;overflow: hidden;
+    padding: 3%;
+}
+.control{
+    width: 100%;
+    float: right;
+    background: #fff
+}
+.control img{width: 25%;float:left;margin: 0 8%;cursor: pointer}
+.control button{
+    background: none;
+    border: none;
+    color: blue;
+    outline: none
+}
+.control span{
+  line-height: 6rem;
+    font-size: 40px;
+    cursor: pointer;
+    color: greenyellow;
+}
+.control label{float: left}
+#btnSend{
+  width: 8%;
+height: 6rem;
+line-height: 5rem;
+}
+#title{
+    background: green;
+    text-align: center;
+    padding: 5px;
+    color: #fff;
+}
+
+.tinnhan_di{
+  float: right;
+}
+
+
+.chat{
+    height: 66rem;overflow-y: scroll;overflow-x: hidden;clear: both;
+}
+.list-group{
+    height: 31rem;overflow-y: scroll;clear: both;overflow-x: hidden;
+}
+.message{
+    word-wrap: break-word;
+    line-height: 1.5em;
+    max-width: 40%;
+    margin-bottom: 5px;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+.friend-message{
+    margin-left: 10px;
+    color: #000000;
+    float: left;
+    background: #92fcec;
+}
+.my-message{
+    margin-top: 35px;
+    margin-right: 10px;
+    clear: both;
+    color: #ffffff;
+    float: right;
+    background: #0084ff
+}
+.friend-name{
+    font-size: 90%;
+    padding-left: 3px;
+    margin-left: 82px;
+    margin-bottom: 5px;
+    padding-top: 15px;
+    color: #9f9f9f;
+    clear: both;
+}
+.avatar{
+    font-size: 40px;
+    color: blue;
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin-left: 10px;
+    border-radius: 50%;
+}
+.btnAddImage {
+    background-position: -160px 0;
+}
+.btnControl {
+    width: 40px;
+    height: 40px;
+    margin: 5px 3px;
+    float: right;
+    cursor: pointer;
+}
+input[type=file]{
+    display: none
+}
+#messageForm{
+    background: #fff;
+    padding: 2%;
+}
+#danhsachUserOnline{
+  min-height: 59rem;
+  background: #fff
+}
